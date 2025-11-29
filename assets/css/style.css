@@ -56,7 +56,7 @@ h6,
 }
 
 a {
-  color: #f4a460;
+  color: #2baab7;
   text-decoration: none;
   transition: 0.3s;
   -webkit-transition: 0.3s;
@@ -2037,7 +2037,7 @@ table p {
 }
 .main-menu > li:hover > a,
 .main-menu > li.active > a {
-  color: #f4a460;
+  color: #2baab7;
 }
 .main-menu.menu-capitalize > li > a {
   font-size: 16px;
