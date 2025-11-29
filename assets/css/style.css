@@ -68,7 +68,7 @@ a:hover,
 a:active,
 a:focus {
   box-shadow: none;
-  color: #ef7b18;
+  color: #33a0ff;
   outline: none;
   text-decoration: none;
 }
@@ -2423,7 +2423,7 @@ table p {
   background-color: #fff;
   box-shadow: 0px 15px 35px 0px rgba(0, 29, 35, 0.02);
   border: 0 !important;
-  padding: 23px 0;
+  padding: 2px 0;
   position: relative;
   z-index: 999;
 }
@@ -7867,10 +7867,10 @@ table p {
   line-height: 24px;
 }
 .footer-area .footer-bottom .widget-copyright p span {
-  color: #f4a460;
+  color: #2baab7;
 }
 .footer-area .footer-bottom .widget-copyright p a {
-  color: #f4a460;
+  color: #2baab7;
 }
 .footer-area .footer-bottom .widget-copyright p i {
   color: #f53400;
