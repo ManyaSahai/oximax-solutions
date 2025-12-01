@@ -3673,7 +3673,7 @@ table p {
 }
 .home-slider-area.slider-default .home-slider-content .home-slider-item {
   background-position: center center;
-  height: 860px;
+  height: 550px;
 }
 @media only screen and (max-width: 1199px) {
   .home-slider-area.slider-default .home-slider-content .home-slider-item {
