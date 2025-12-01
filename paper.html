@@ -4,20 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronics Products</title>
+    <title>Paper Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="assets/css/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
     <style>
-        /* General Page Styling */
+        /* --- General Styles --- */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f8f9fa;
         }
 
-        /* --- Product Card Styling --- */
-        .products-section {
+        /* --- Product Card Styles --- */
+        .product-section {
             padding: 60px 0;
         }
 
@@ -26,117 +25,84 @@
             margin-bottom: 50px;
             font-weight: 700;
             color: #333;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .product-card {
+        .shine-card {
             background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            height: 100%;
             border: 1px solid #eee;
-            /* Necessary for the JS Shine positioning */
-            z-index: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            cursor: pointer;
         }
 
-        .product-card:hover {
+        .shine-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* Image Container */
         .card-img-wrapper {
-            height: 250px;
-            padding: 20px;
+            height: 200px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #fff;
+            background: #f1f1f1;
         }
 
         .card-img-wrapper img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .product-card:hover .card-img-wrapper img {
-            transform: scale(1.05);
-        }
-
-        /* Card Content */
-        .card-body-custom {
+        .card-body {
             padding: 20px;
             text-align: center;
-            background-color: #fff;
-            border-top: 1px solid #f1f1f1;
+            z-index: 2;
+            position: relative;
         }
 
         .card-title {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: bold;
             margin-bottom: 10px;
-            color: #2c3e50;
+            color: #222;
         }
 
-        .card-category {
+        .card-text {
             font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0;
         }
 
-        .btn-custom {
-            background-color: #2c3e50;
-            color: white;
-            padding: 8px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: background 0.3s;
-            display: inline-block;
-        }
-
-        .btn-custom:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
-        /* --- THE JS SHINE EFFECT CSS --- */
-        /* This overlay is controlled by JS variables --x and --y */
-        .shine-overlay {
+        /* --- The JS Shine Effect CSS --- */
+        .shine-card::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(800px circle at var(--x) var(--y),
-                    rgba(255, 255, 255, 0.6),
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+                    rgba(255, 255, 255, 0.4),
                     transparent 40%);
             opacity: 0;
             /* Hidden by default */
+            transition: opacity 0.3s;
             pointer-events: none;
             /* Let clicks pass through */
-            z-index: 5;
-            transition: opacity 0.2s;
-            mix-blend-mode: soft-light;
-            /* Blends nicely with the image */
+            z-index: 3;
         }
 
-        .product-card:hover .shine-overlay {
+        .shine-card:hover::before {
             opacity: 1;
             /* Show on hover */
         }
 
-        /* Header Fixes for provided code */
-        .navbar-brand img {
-            max-width: 100%;
-        }
-
+        /* --- Footer Adjustments (from your snippet) --- */
         .footer-area {
             background-color: #f8f9fa;
             /* Light grey footer based on content */
@@ -153,6 +119,15 @@
         .footer-bottom a {
             color: #aaa;
         }
+
+        .widget-title {
+            color: #fff;
+        }
+
+
+        .nav-link {
+            font-weight: 500;
+        }
     </style>
 </head>
 
@@ -163,8 +138,7 @@
             <div class="container">
 
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/img/OIS LOGO.png" alt="OIS Logo" style="width: 80px;"
-                        onerror="this.src='https://via.placeholder.com/80x40?text=LOGO'" />
+                    <img src="assets/img/OIS LOGO.png" alt="Logo" style="width: 80px;" />
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu"
@@ -188,154 +162,151 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
         </nav>
     </header>
-
-    <main class="products-section">
+    <section class="product-section">
         <div class="container">
-            <h2 class="section-title">Electronic Products We Deal In</h2>
+            <h2 class="section-title">Our Paper Products</h2>
 
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
-                        <div class="card-img-wrapper">
-                            <img src="assets/img/products/led.jpg" alt="Party Speaker">
-                        </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Audio System</div>
-                            <h3 class="card-title">X-10L Trolley Speaker</h3>
-                            <p class="text-muted">8"x2 Woofer with LED Lights</p>
 
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/img/paper.jpg" alt="A4 Copy Paper">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">A4 & A3 Copy Paper</h5>
+                            <p class="card-text">Multipurpose 70-80 GSM paper for all copiers.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/fridge.jpg" alt="Refrigerator">
+                            <img src="assets/img/paperoll.jpg" alt="Paper Rolls">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Home Appliances</div>
-                            <h3 class="card-title"> Refrigerator</h3>
-                            <p class="text-muted">High Efficiency Cooling</p>
-
+                        <div class="card-body">
+                            <h5 class="card-title">Paper Rolls</h5>
+                            <p class="card-text">High quality rolls for printing and writing.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/freezer.jpg" alt="Chest Freezer">
+                            <img src="assets/img/newsprint.webp" alt="Newsprint">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Commercial Cooling</div>
-                            <h3 class="card-title">Deep Chest Freezer</h3>
-                            <p class="text-muted">Faster Cooling & Eco Friendly</p>
-
+                        <div class="card-body">
+                            <h5 class="card-title">Newsprint</h5>
+                            <p class="card-text">Wood pulp paper for newspapers and packing.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/washingmachine.webp" alt="Washing Machine">
+                            <img src="assets/img/kraftpaper.jpg" alt="Kraft Paper">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Home Laundry</div>
-                            <h3 class="card-title">Washing Machine</h3>
-                            <p class="text-muted">Top Load Twin Tub</p>
-
+                        <div class="card-body">
+                            <h5 class="card-title">Kraft Paper & Rolls</h5>
+                            <p class="card-text">Durable paper for wrapping, packing, and crafts.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/oven.avif" alt="Cooking Range">
+                            <img src="assets/img/duplexboard.jpg" alt="Duplex Board">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Kitchen Appliances</div>
-                            <h3 class="card-title">Free Standing Oven</h3>
-                            <p class="text-muted">4-Burner Gas Range</p>
-
+                        <div class="card-body">
+                            <h5 class="card-title">Duplex Board</h5>
+                            <p class="card-text">Sturdy board for industrial and food packaging.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/aircooler.jpg" alt="Air Cooler">
+                            <img src="assets/img/thermalpaper.jpg" alt="Thermal Paper">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Climate Control</div>
-                            <h3 class="card-title">Evaporative Air Cooler</h3>
-                            <p class="text-muted">Portable Cooling Unit</p>
-
+                        <div class="card-body">
+                            <h5 class="card-title">Thermal Paper</h5>
+                            <p class="card-text">Smooth, heat-sensitive paper for POS receipts.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/ledtv.jpg" alt="LED TV">
+                            <img src="assets/img/tissuepaper.jpg" alt="Tissue Paper">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Entertainment</div>
-                            <h3 class="card-title">Smart LED TV</h3>
-                            <p class="text-muted">4K Ultra HD Display</p>
-
+                        <div class="card-body">
+                            <h5 class="card-title">Tissue Paper</h5>
+                            <p class="card-text">Soft, absorbent tissue for napkins and towels.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/tablefan.webp" alt="Split AC">
+                            <img src="assets/img/bond.jpg" alt="Bond Paper">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Climate Control</div>
-                            <h3 class="card-title">Table Fan</h3>
-                            <p class="text-muted">Super Cool & Silent Mode</p>
-
+                        <div class="card-body">
+                            <h5 class="card-title">Bond Paper</h5>
+                            <p class="card-text">Durable writing paper for professional stationery.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="product-card" data-shine>
-                        <div class="shine-overlay"></div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
                         <div class="card-img-wrapper">
-                            <img src="assets/img/products/gastove.webp" alt="Gas Stove">
+                            <img src="assets/img/carbonless.jpg" alt="NCR Paper">
                         </div>
-                        <div class="card-body-custom">
-                            <div class="card-category">Kitchen Appliances</div>
-                            <h3 class="card-title">Glass Top Gas Stove</h3>
-                            <p class="text-muted">3-Burner Premium Finish</p>
+                        <div class="card-body">
+                            <h5 class="card-title">Carbonless (NCR) Paper</h5>
+                            <p class="card-text">Multi-ply paper for invoices and receipts.</p>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/img/exercise.png" alt="Notebooks">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Exercise Books</h5>
+                            <p class="card-text">Customizable notebooks for school and office use.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="shine-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/img/stationary.jpg" alt="Stationeries">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Stationeries</h5>
+                            <p class="card-text">Pens, pencils, rulers, and office supplies.</p>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-    </main>
-
+    </section>
     <footer class="footer-area">
         <div class="footer-main">
             <div class="container">
@@ -344,11 +315,8 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="widget-item">
                             <img src="assets/img/OIS LOGO.png" alt="Company Logo"
-                                style="width:130px; margin-bottom:15px;"
-                                onerror="this.src='https://via.placeholder.com/130x60?text=LOGO'" />
-
+                                style="width:130px; margin-bottom:15px;" />
                             <h4 class="widget-title" style="margin-bottom: 15px;">About Us</h4>
-
                             <div class="about-widget">
                                 <p>Delivering premium quality, smart design, and complete customer satisfaction.</p>
                             </div>
@@ -361,7 +329,8 @@
                             <nav class="widget-menu-wrap">
                                 <ul class="nav-menu nav list-unstyled">
                                     <li><a href="#/" class="text-decoration-none text-reset">About Us</a></li>
-                                    <li><a href="#/" class="text-decoration-none text-reset">Electronics</a></li>
+                                    <li><a href="electronics.html"
+                                            class="text-decoration-none text-reset">Electronics</a></li>
                                     <li><a href="#/" class="text-decoration-none text-reset">Furniture</a></li>
                                     <li><a href="#/" class="text-decoration-none text-reset">Paper Products</a></li>
                                     <li><a href="#/" class="text-decoration-none text-reset">Contact Us</a></li>
@@ -373,8 +342,7 @@
                     <div class="col-lg-5 col-md-12 col-sm-12">
                         <div class="widget-item">
                             <h4 class="widget-title" style="margin-bottom: 15px;">Contact Us</h4>
-
-                            <div class="d-flex justify-content-between align-items-start flex-wrap">
+                            <div class="d-flex justify-content-between align-items-start">
                                 <div style="padding-right: 15px;">
                                     <ul class="widget-contact-info list-unstyled mb-0">
                                         <li class="mb-1"><strong>Oximax Infinite Solutions FZ-LLC</strong></li>
@@ -382,20 +350,17 @@
                                         <li class="mb-1">Compass Building, Al Shohada Road</li>
                                         <li class="mb-1">AL Hamra Industrial Zone-FZ</li>
                                         <li class="mb-3">Ras Al Khaimah, United Arab Emirates</li>
-
                                         <li class="mb-1">Website: <a href="https://www.ois-uae.com" target="_blank"
                                                 class="text-reset">www.ois-uae.com</a></li>
                                         <li class="mb-1">Email: ois.oximax@gmail.com</li>
                                         <li class="mb-1">Mobile: +971 588402191</li>
                                     </ul>
                                 </div>
-
-                                <div class="d-flex flex-column align-items-center flex-shrink-0 mt-3 mt-lg-0"
-                                    style="gap: 10px;">
+                                <div class="d-flex flex-column align-items-center flex-shrink-0" style="gap: 10px;">
                                     <img src="assets/img/qrcode/1.png" alt="QR Code 1"
-                                        style="width: 95px; height: auto;" onerror="this.style.display='none'">
+                                        style="width: 95px; height: auto;">
                                     <img src="assets/img/qrcode/2.png" alt="QR Code 2"
-                                        style="width: 95px; height: auto;" onerror="this.style.display='none'">
+                                        style="width: 95px; height: auto;">
                                 </div>
                             </div>
                         </div>
@@ -404,6 +369,7 @@
                 </div>
             </div>
         </div>
+
         <div class="footer-bottom">
             <div class="container">
                 <div class="footer-bottom-content">
@@ -419,26 +385,28 @@
             </div>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.product-card[data-shine]');
+        // Select all cards with the 'shine-card' class
+        const cards = document.querySelectorAll(".shine-card");
 
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+        cards.forEach((card) => {
+            card.addEventListener("mousemove", (e) => {
+                // Get the card's bounding rectangle
+                const rect = card.getBoundingClientRect();
 
-                    // Set CSS variables for the exact cursor position within the card
-                    card.style.setProperty('--x', `${x}px`);
-                    card.style.setProperty('--y', `${y}px`);
-                });
+                // Calculate mouse position relative to the card
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Set CSS variables for the shine effect
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
             });
         });
     </script>
+
 </body>
 
 </html>
